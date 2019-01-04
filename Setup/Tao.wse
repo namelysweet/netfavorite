@@ -1,0 +1,846 @@
+Document Type: WSE
+item: Global
+  Version=9.02
+  Title=ÌÔ¹Ü¼Ò Installation
+  Title French= Installation
+  Flags=00010100
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Copy Default=1
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Progress Bar DLL=%_WISE_%\Progress\WizWin32a.DLL
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000000010
+  Log Pathname=%MAINDIR%\INSTALL.LOG
+  Message Font=Tahoma
+  Font Size=8
+  Pages Modified=00011000111100000000001100000011
+  Extra Pages=00000000000000000000000010110000
+  Disk Label=Default
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Version File=ÌÔ¹Ü¼Ò
+  Version Description=ÌÔ¹Ü¼Ò
+  Version Copyright=ÏÂÒ»¼þ
+  Version Company=ÏÂÒ»¼þ
+  Crystal Format=10111100101100000010001001001001
+  Crystal Destination=00000000000000000000000000001011
+  Step View=&All
+  Variable Name1=_SYS_
+  Variable Default1=C:\Windows\system32
+  Variable Flags1=00001000
+  Variable Name2=_WIN_
+  Variable Default2=C:\Windows
+  Variable Flags2=00001000
+  Variable Name3=_WISE_
+  Variable Default3=C:\Program Files\Wise Installation System
+  Variable Flags3=00001000
+  Variable Name4=_ALIASNAME_
+  Variable Flags4=00001000
+  Variable Name5=_ALIASPATH_
+  Variable Flags5=00001000
+  Variable Name6=_ALIASTYPE_
+  Variable Flags6=00001000
+  Variable Name7=_INIT_WINDOW_
+  Variable Default7=D:\ÏÂÒ»¼þ_ÍøÂçÊÕ²Ø¼Ð\Setup\Splash.bmp
+  Variable Flags7=00001000
+end
+item: Remark
+  Text=If you do not want Rem statements to appear when you create a new installation,
+end
+item: Remark
+  Text=open Empty Project.wse from the Template folder in the Wise application
+end
+item: Remark
+  Text=directory, delete the Rem statements, and select Save from the File menu.
+end
+item: Open/Close INSTALL.LOG
+  Flags=00000001
+end
+item: Remark
+end
+item: Remark
+  Text=If the destination system does not have a writable Windows\System directory, system files will be written to the Windows\ directory
+end
+item: Check if File/Dir Exists
+  Pathname=%SYS%
+  Flags=10000100
+end
+item: Set Variable
+  Variable=SYS
+  Value=%WIN%
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=APPTITLE is the application title of the installation
+end
+item: Set Variable
+  Variable=APPTITLE
+  Value=ÌÔ¹Ü¼Ò
+  Flags=10000000
+end
+item: Remark
+end
+item: Remark
+  Text=GROUP is the variable that holds the Program Files Group that shortcuts will be placed on the Windows Start Menu
+end
+item: Set Variable
+  Variable=GROUP
+  Value=ÏÂÒ»¼þÈí¼þ
+  Flags=10000000
+end
+item: Remark
+end
+item: Remark
+  Text=DISABLED variable is initialized for backward compatability
+end
+item: Set Variable
+  Variable=DISABLED
+  Value=!
+end
+item: Remark
+end
+item: Remark
+  Text=MAINDIR is the variable that holds the default destination directory
+end
+item: Set Variable
+  Variable=MAINDIR
+  Value=Xiayijian\Tao
+  Flags=10000000
+end
+item: Remark
+end
+item: Remark
+  Text=USERNAME is the variable that holds the Windows Logon name
+end
+item: Get System Information
+  Variable=USERNAME
+  Flags=00010001
+end
+item: Remark
+end
+item: Remark
+  Text=This IF/THEN/ELSE blocks reads the default Program Files and Common directories from the registry
+end
+item: Check Configuration
+  Flags=10111011
+end
+item: Get Registry Key Value
+  Variable=COMMON
+  Key=SOFTWARE\Microsoft\Windows\CurrentVersion
+  Default=C:\Program Files\Common Files
+  Value Name=CommonFilesDir
+  Flags=00000100
+end
+item: Get Registry Key Value
+  Variable=PROGRAM_FILES
+  Key=SOFTWARE\Microsoft\Windows\CurrentVersion
+  Default=C:\Program Files
+  Value Name=ProgramFilesDir
+  Flags=00000100
+end
+item: Set Variable
+  Variable=MAINDIR
+  Value=%PROGRAM_FILES%\%MAINDIR%
+  Flags=00001100
+end
+item: Set Variable
+  Variable=EXPLORER
+  Value=1
+end
+item: Else Statement
+end
+item: Set Variable
+  Variable=MAINDIR
+  Value=C:\%MAINDIR%
+  Flags=00001100
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=BACKUP is the variable that holds the path that all backup files will be copied to when overwritten
+end
+item: Set Variable
+  Variable=BACKUP
+  Value=%MAINDIR%\BACKUP
+  Flags=10000000
+end
+item: Remark
+end
+item: Remark
+  Text=DOBACKUP determines if a backup will be performed.  The possible values are A (do backup) or B (do not do backup)
+end
+item: Set Variable
+  Variable=DOBACKUP
+  Value=B
+  Flags=10000000
+end
+item: Remark
+end
+item: Remark
+  Text=If COMPONENTS are enabled, the COMPONENTS variable is initialized with possible selections
+end
+item: Set Variable
+  Variable=COMPONENTS
+  Flags=10000000
+end
+item: Remark
+end
+item: Remark
+  Text=BRANDING determines if the installation will be branded with a name and company.  By default, this is written to the INST directory (installation media).
+end
+item: Set Variable
+  Variable=BRANDING
+  Value=0
+end
+item: If/While Statement
+  Variable=BRANDING
+  Value=1
+end
+item: Read INI Value
+  Variable=NAME
+  Pathname=%INST%\CUSTDATA.INI
+  Section=Registration
+  Item=Name
+end
+item: Read INI Value
+  Variable=COMPANY
+  Pathname=%INST%\CUSTDATA.INI
+  Section=Registration
+  Item=Company
+end
+item: If/While Statement
+  Variable=NAME
+end
+item: Set Variable
+  Variable=DOBRAND
+  Value=1
+end
+item: Get System Information
+  Variable=NAME
+  Flags=00000110
+end
+item: Get System Information
+  Variable=COMPANY
+  Flags=00000111
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=The Wizard Loop contains the dialog screens that the user sees in the installation
+end
+item: Remark
+  Text=If you would like to change the graphic on the dialog boxes, you need to change it by double-clicking on the Wizard Loop line and change the bitmap path.
+end
+item: Wizard Block
+  Direction Variable=DIRECTION
+  Display Variable=DISPLAY
+  Bitmap Pathname=%_WISE_%\Dialogs\Template\TopImage.bmp
+  X Position=0
+  Y Position=0
+  Filler Color=8421376
+  Flags=00000001
+end
+item: Remark
+  Text=If you need to change the size of your Custom Dialogs, you need only change the "Welcome" screen.  
+end
+item: Remark
+  Text=It's size is the template for all following dialogs within the Wizard Loop.
+end
+item: Custom Dialog Set
+  Name=Welcome
+  Display Variable=DISPLAY
+  item: Dialog
+    Title=%APPTITLE%
+    Title French=%APPTITLE%
+    Title German=%APPTITLE%
+    Title Portuguese=%APPTITLE% 
+    Title Spanish=%APPTITLE%
+    Title Italian=%APPTITLE%
+    Title Danish=%APPTITLE%
+    Title Dutch=%APPTITLE%
+    Title Norwegian=%APPTITLE%
+    Title Swedish=%APPTITLE%
+    Width=290
+    Height=238
+    Font Name=Helv
+    Font Size=8
+    Flags=0000000100000000
+    item: Push Button
+      Rectangle=186 200 228 214
+      Variable=DIRECTION
+      Value=N
+      Create Flags=01010000000000010000000000000001
+      Text=ÏÂÒ»²½
+      Text French=&Suivant>
+      Text German=&Weiter>
+      Text Portuguese=&Próximo>
+      Text Spanish=&Siguiente >
+      Text Italian=&Avanti >
+      Text Danish=&Næste>
+      Text Dutch=&Volgende>
+      Text Norwegian=&Neste>
+      Text Swedish=&Nästa >
+    end
+    item: Push Button
+      Rectangle=237 200 279 214
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=È¡Ïû
+      Text French=Annuler
+      Text German=Abbrechen
+      Text Portuguese=Cancelar
+      Text Spanish=Cancelar
+      Text Italian=Annulla
+      Text Danish=Annuller
+      Text Dutch=Annuleren
+      Text Norwegian=Avbryt
+      Text Swedish=Avbryt
+    end
+    item: Static
+      Rectangle=0 193 285 194
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=100 10 278 44
+      Destination Dialog=4
+      Enabled Color=00000000000000001111111111111111
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Î¢ÈíÑÅºÚ
+      Font Style=-12 0 0 0 700 0 0 0 0 3 2 1 34
+      Text=»¶Ó­Ñ¡Ôñ %APPTITLE% (ÏÂÒ»¼þ³öÆ·) °²×°³ÌÐò. ¸ÃÏòµ¼½«×Ô¶¯°ïÄú°²×° %APPTITLE% µ½ÄúµÄµçÄÔÖÐ.
+      Text French=Bienvenue sur le programme d'installation %APPTITLE%. Ce programme va installer %APPTITLE% sur votre ordinateur.
+      Text German=Willkommen im Installationsprogramm für %APPTITLE%. Dieses Programm installiert  %APPTITLE% auf Ihrem Computer.
+      Text Portuguese=Bem-vindo ao programa de configuração %APPTITLE%. Este programa instalará %APPTITLE% no seu computador
+      Text Spanish=Bienvenido al programa de Configuración %APPTITLE%. Este programa instalará %APPTITLE en su ordenador
+      Text Italian=Benvenuto nel programma di installazione di %APPTITLE%. Con questo programma puoi installare %APPTITLE% sul tuo computer.
+      Text Danish=Velkommen til %APPTITLE% installationsprogrammet. Dette program installerer %APPTITLE% på computeren.
+      Text Dutch=Welkom bij het %APPTITLE% installatieprogramma. Dit programma installeert %APPTITLE% op uw computer.
+      Text Norwegian=Velkommen til %APPTITLE% Oppsett-program. Dette programmet vil installere %APPTITLE% på datamaskinen din.
+      Text Swedish=Välkommen till installationsprogrammet för %APPTITLE%. Detta program installerar %APPTITLE% på din dator.
+    end
+    item: Static
+      Rectangle=0 0 285 193
+      Action=2
+      Enabled Color=00000000000000001111111111111111
+      Create Flags=01010000000000000000000000001011
+      Pathname=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname French=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname German=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Portuguese=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Spanish=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Italian=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Danish=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Dutch=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Norwegian=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Swedish=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+    end
+  end
+end
+item: Remark
+  Text=This reinitialized the BACKUP directory so that it reflects the change the user made to MAINDIR
+end
+item: If/While Statement
+  Variable=DISPLAY
+  Value=Select Destination Directory
+end
+item: Set Variable
+  Variable=BACKUP
+  Value=%MAINDIR%\BACKUP
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=When the BACKUP feature is enabled, the BACKUPDIR is initialized
+end
+item: If/While Statement
+  Variable=DOBACKUP
+  Value=A
+end
+item: Set Variable
+  Variable=BACKUPDIR
+  Value=%BACKUP%
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=The BRANDING information is written to the INI file on the installation media.
+end
+item: If/While Statement
+  Variable=BRANDING
+  Value=1
+end
+item: If/While Statement
+  Variable=DOBRAND
+  Value=1
+end
+item: Edit INI File
+  Pathname=%INST%\CUSTDATA.INI
+  Settings=[Registration]
+  Settings=NAME=%NAME%
+  Settings=COMPANY=%COMPANY%
+  Settings=
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=Begin writing to the INSTALL.LOG 
+end
+item: Open/Close INSTALL.LOG
+end
+item: Remark
+end
+item: Remark
+  Text=Check free disk space calculates free disk space as well as component sizes.
+end
+item: Remark
+  Text=It should be located before all Install File actions.
+end
+item: Check Disk Space
+  Component=COMPONENTS
+end
+item: Remark
+end
+item: Remark
+  Text=This include script allows uninstall support
+end
+item: Include Script
+  Pathname=%_WISE_%\INCLUDE\uninstal.wse
+end
+item: Install File
+  Source=c:\_ProjectOutput\config\config.conf
+  Destination=%MAINDIR%\config\config.conf
+  Flags=0000000010000010
+end
+item: Install File
+  Source=c:\_ProjectOutput\NetFavorites.exe
+  Destination=%MAINDIR%\NetFavorites.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=d:\ÏÂÒ»¼þ_ÍøÂçÊÕ²Ø¼Ð\bin\NetFavorites.exe.manifest
+  Destination=%MAINDIR%\NetFavorites.exe.manifest
+  Flags=0000000010000010
+end
+item: Create Directory
+  Pathname=%MAINDIR%\log
+end
+item: Remark
+end
+item: Remark
+  Text=The following two lines reset COMMON and MAINDIR to short filesnames. This is for backwards compatibility.
+end
+item: Set Variable
+  Variable=COMMON
+  Value=%COMMON%
+  Flags=00010100
+end
+item: Set Variable
+  Variable=MAINDIR
+  Value=%MAINDIR%
+  Flags=00010100
+end
+item: Remark
+end
+item: Remark
+  Text=This IF/THEN/ELSE reads the correct registry entries for shortcut/icon placement
+end
+item: Check Configuration
+  Flags=10111011
+end
+item: Get Registry Key Value
+  Variable=STARTUPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\Programs\StartUp
+  Value Name=StartUp
+  Flags=00000010
+end
+item: Get Registry Key Value
+  Variable=DESKTOPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Desktop
+  Value Name=Desktop
+  Flags=00000010
+end
+item: Get Registry Key Value
+  Variable=STARTMENUDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu
+  Value Name=Start Menu
+  Flags=00000010
+end
+item: Get Registry Key Value
+  Variable=GROUPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\Programs
+  Value Name=Programs
+  Flags=00000010
+end
+item: Get Registry Key Value
+  Variable=CSTARTUPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%STARTUPDIR%
+  Value Name=Common Startup
+  Flags=00000100
+end
+item: Get Registry Key Value
+  Variable=CDESKTOPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%DESKTOPDIR%
+  Value Name=Common Desktop
+  Flags=00000100
+end
+item: Get Registry Key Value
+  Variable=CSTARTMENUDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%STARTMENUDIR%
+  Value Name=Common Start Menu
+  Flags=00000100
+end
+item: Get Registry Key Value
+  Variable=CGROUPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%GROUPDIR%
+  Value Name=Common Programs
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CGROUP_SAVE
+  Value=%GROUP%
+end
+item: Set Variable
+  Variable=GROUP
+  Value=%GROUPDIR%\%GROUP%
+end
+item: Create Shortcut
+  Source=%MAINDIR%\NetFavorites.exe
+  Destination=%GROUP%\ÌÔ¹Ü¼Ò.lnk
+  Icon Number=0
+  Flags=01000000
+end
+item: Create Shortcut
+  Source=%MAINDIR%\NetFavorites.exe
+  Destination=%DESKTOPDIR%\ÌÔ¹Ü¼Ò.lnk
+  Icon Number=0
+end
+item: Create Shortcut
+  Source=%MAINDIR%\NetFavorites.exe
+  Destination=%STARTMENUDIR%\ÌÔ¹Ü¼Ò.lnk
+  Icon Number=0
+end
+item: Create Shortcut
+  Source=%MAINDIR%\NetFavorites.exe
+  Destination=%STARTUPDIR%\ÌÔ¹Ü¼Ò.lnk
+  Icon Number=0
+end
+item: Else Statement
+end
+item: Add ProgMan Icon
+  Group=StartUp
+  Icon Name=ÌÔ¹Ü¼Ò
+  Command Line=%MAINDIR%\NetFavorites.exe
+  Flags=01000000
+end
+item: Add ProgMan Icon
+  Group=%GROUP%
+  Icon Name=ÌÔ¹Ü¼Ò
+  Command Line=%MAINDIR%\NetFavorites.exe
+  Flags=01000000
+end
+item: Add ProgMan Icon
+  Group=%GROUP%
+  Icon Name=ÌÔ¹Ü¼Ò
+  Command Line=%MAINDIR%\NetFavorites.exe
+  Flags=01000000
+end
+item: Add ProgMan Icon
+  Group=%GROUP%
+  Icon Name=ÌÔ¹Ü¼Ò
+  Command Line=%MAINDIR%\NetFavorites.exe
+  Flags=01000000
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=All OCX/DLL/EXE files that are self-registered
+end
+item: Self-Register OCXs/DLLs
+  Description=Updating System Configuration, Please Wait...
+end
+item: Remark
+end
+item: Remark
+  Text=This Wizard Loop finalizes the install 
+end
+item: Edit INI File
+  Pathname=%UNINSTALL_LANG%
+  Settings=[Settings]
+  Settings=Text Font=Tahoma
+  Settings=
+end
+item: Add Text to INSTALL.LOG
+  Text=Delete in-use files: On
+end
+item: Wizard Block
+  Direction Variable=DIRECTION
+  Display Variable=DISPLAY
+  Bitmap Pathname=%_WISE_%\Dialogs\Template\SideImage.bmp
+  X Position=0
+  Y Position=0
+  Filler Color=8421440
+  Flags=00000011
+end
+item: Custom Dialog Set
+  Name=Finished
+  Display Variable=DISPLAY
+  item: Dialog
+    Title=%APPTITLE%
+    Title French=%APPTITLE%
+    Title German=%APPTITLE%
+    Title Portuguese=%APPTITLE%
+    Title Spanish=%APPTITLE%
+    Title Italian=%APPTITLE%
+    Title Danish=%APPTITLE%
+    Title Dutch=%APPTITLE%
+    Title Norwegian=%APPTITLE%
+    Title Swedish=%APPTITLE%
+    Width=290
+    Height=238
+    Font Name=Helv
+    Font Size=8
+    Flags=0000000100000000
+    item: Push Button
+      Rectangle=186 200 228 214
+      Variable=DIRECTION
+      Value=N
+      Create Flags=01010000000000010000000000000001
+      Text=Íê³É >
+      Text French=&Terminer>
+      Text German=&Fertigstellen>
+      Text Portuguese=&Terminar >
+      Text Spanish=&Finalizar>
+      Text Italian=&Fine >
+      Text Danish=&Afslut >
+      Text Dutch=&Klaar>
+      Text Norwegian=&Avslutt>
+      Text Swedish=&Sluta>
+    end
+    item: Push Button
+      Control Name=CANCEL
+      Rectangle=237 200 279 214
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=È¡Ïû
+      Text French=Annuler
+      Text German=Abbrechen
+      Text Portuguese=Cancelar
+      Text Spanish=Cancelar
+      Text Italian=Annulla
+      Text Danish=Annuller
+      Text Dutch=Annuleren
+      Text Norwegian=Avbryt
+      Text Swedish=Avbryt
+    end
+    item: Static
+      Rectangle=0 193 285 194
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=100 10 275 74
+      Destination Dialog=4
+      Enabled Color=00000000000000001111111111111111
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Î¢ÈíÑÅºÚ
+      Font Style=-12 0 0 0 700 0 0 0 0 3 2 1 34
+      Text=%APPTITLE% ÒÑ¾­°²×°Íê³É.
+      Text=
+      Text=
+      Text=µã»÷Íê³É°´Å¥½áÊø°²×°.
+      Text=
+      Text French=L'installation de %APPTITLE% est réussie.
+      Text French=
+      Text French=
+      Text French=Cliquez sur Terminer pour quitter cette installation.
+      Text French=
+      Text German=%APPTITLE% wurde erfolgreich installiert.
+      Text German=
+      Text German=
+      Text German=Zum Beenden dieser Installation Fertigstellen anklicken.
+      Text German=
+      Text Portuguese=%APPTITLE% foi instalado com êxito
+      Text Portuguese=
+      Text Portuguese=
+      Text Portuguese=Pressionar o botão Terminar para sair desta instalação
+      Text Portuguese=
+      Text Spanish=%APPTITLE% se ha instalado con éxito.
+      Text Spanish=
+      Text Spanish=
+      Text Spanish=Pulse el botón de Finalizar para salir de esta instalación.
+      Text Spanish=
+      Text Italian=%APPTITLE% è stato installato.
+      Text Italian=
+      Text Italian=
+      Text Italian=Premi il pulsante Fine per uscire dal programma di installazione
+      Text Italian=
+      Text Danish=%APPTITLE% er nu installeret korrekt.
+      Text Danish=
+      Text Danish=
+      Text Danish=Klik på Afslut for at afslutte installationen.
+      Text Danish=
+      Text Dutch=%APPTITLE% is met succes geïnstalleerd.
+      Text Dutch=
+      Text Dutch=
+      Text Dutch=Druk op Klaar om deze installatie af te ronden.
+      Text Dutch=
+      Text Norwegian=Installasjonen av %APPTITLE% er vellykket.
+      Text Norwegian=
+      Text Norwegian=
+      Text Norwegian=Trykk på Avslutt-tasten for å avslutte denne installasjonen.
+      Text Norwegian=
+      Text Swedish=Installationen av %APPTITLE% har lyckats.
+      Text Swedish=
+      Text Swedish=
+      Text Swedish=Tryck på Sluta för att gå ur installationsprogrammet.
+      Text Swedish=
+    end
+    item: Push Button
+      Control Name=BACK
+      Rectangle=144 200 186 214
+      Variable=DIRECTION
+      Value=B
+      Create Flags=01010000000000010000000000000000
+      Text=< ÉÏÒ»²½
+      Text French=<&Retour
+      Text German=<&Zurück
+      Text Portuguese=<&Retornar
+      Text Spanish=<&Retroceder
+      Text Italian=< &Indietro
+      Text Danish=<&Tilbage
+      Text Dutch=<&Terug
+      Text Norwegian=<&Tilbake
+      Text Swedish=< &Tillbaka
+    end
+    item: Static
+      Rectangle=0 0 285 193
+      Action=2
+      Enabled Color=00000000000000001111111111111111
+      Create Flags=01010000000000000000000000001011
+      Pathname=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname French=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname German=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Portuguese=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Spanish=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Italian=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Danish=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Dutch=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Norwegian=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+      Pathname Swedish=%_WISE_%\DIALOGS\TEMPLATE\SideImage.bmp
+    end
+    item: Set Control Attribute
+      Control Name=BACK
+      Operation=1
+    end
+    item: Set Control Attribute
+      Control Name=CANCEL
+      Operation=1
+    end
+  end
+end
+item: End Block
+end
+item: Edit Registry
+  Total Keys=6
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Uninstall\%APPTITLE%
+    New Value=ÌÔ¹Ü¼Ò
+    Value Name=DisplayVersion
+    Root=2
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Uninstall\%APPTITLE%
+    New Value=135218*****
+    Value Name=HelpTelephone
+    Root=2
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Uninstall\%APPTITLE%
+    New Value=ÌÔ¹Ü¼Ò
+    Value Name=Publisher
+    Root=2
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Uninstall\%APPTITLE%
+    New Value=http://www.xiayijian.com
+    Value Name=URLInfoAbout
+    Root=2
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Uninstall\%APPTITLE%
+    New Value=ÏÂÒ»¼þ
+    Value Name=Contact
+    Root=2
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Uninstall\%APPTITLE%
+    New Value=ÌÔ¹Ü¼Ò
+    Value Name=Comments
+    Root=2
+  end
+end
+item: Edit Registry
+  Total Keys=2
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Uninstall\%APPTITLE%
+    New Value=ÌÔ¹Ü¼Ò
+    Value Name=HelpLink
+    Root=2
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Uninstall\%APPTITLE%
+    New Value=%MAINDIR%\NetFavorites.exe,-0
+    Value Name=DisplayIcon
+    Root=2
+  end
+end
+item: New Event
+  Name=Cancel
+end
+item: Remark
+  Text=This include script supports a rollback to preinstallation state if the user chooses to cancel before the installation is complete.
+end
+item: Include Script
+  Pathname=%_WISE_%\INCLUDE\rollback.wse
+end

@@ -1,0 +1,53 @@
+PARENT DIALOG CONTROLS
+Control ID == 1
+Control ID == 2
+Control ID == 3
+Control ID == 1018
+Control ID == 1028
+Control ID == 1034
+Control ID == 1035
+Control ID == 1036
+Control ID == 1037
+Control ID == 1038
+Control ID == 1039
+Control ID == 1044
+Control ID == 1045
+Control ID == 1256
+
+LICENSE PAGE CONTROLS
+Control ID == 1000
+Control ID == 1006
+Control ID == 1040
+
+COMPONENTS PAGE CONTROLS
+Control ID == 1006
+Control ID == 1017
+Control ID == 1021
+Control ID == 1022
+Control ID == 1023
+Control ID == 1032
+Control ID == 1042
+Control ID == 1043
+
+DIRECTORY PAGE CONTROLS
+Control ID == 1001
+Control ID == 1006
+Control ID == 1008
+Control ID == 1019
+Control ID == 1020
+Control ID == 1023
+Control ID == 1024
+
+START MENU PAGE CONTROLS
+Control ID == 1001
+Control ID == 1002
+Control ID == 1003
+Control ID == 1004
+Control ID == 1005
+
+INSTALL FILES PAGE CONTROLS
+Control ID == 1004
+Control ID == 1006
+Control ID == 1016
+Control ID == 1027
+

@@ -1,0 +1,141 @@
+object frmBaseCommon: TfrmBaseCommon
+  Left = 820
+  Top = 270
+  Caption = #36890#29992#27597#29256#39029
+  ClientHeight = 412
+  ClientWidth = 533
+  Color = clBtnFace
+  DoubleBuffered = True
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlBase: TRzPanel
+    Left = 0
+    Top = 0
+    Width = 533
+    Height = 412
+    Align = alClient
+    BorderOuter = fsFlat
+    BorderColor = clWhite
+    BorderHighlight = clWhite
+    BorderShadow = clWhite
+    BorderWidth = 1
+    FlatColor = 10314394
+    GradientColorStyle = gcsCustom
+    GradientColorStop = clWhite
+    GridColor = clWhite
+    TabOrder = 0
+    VisualStyle = vsGradient
+    OnMouseDown = pnlBaseMouseDown
+    object pnlTitleBar: TRzPanel
+      Left = 2
+      Top = 2
+      Width = 529
+      Height = 34
+      Align = alTop
+      BorderOuter = fsNone
+      BorderColor = clWhite
+      BorderShadow = clWhite
+      FlatColor = clWhite
+      GradientColorStyle = gcsCustom
+      GradientColorStart = 16442362
+      GradientColorStop = clWhite
+      GridColor = clWhite
+      TabOrder = 0
+      VisualStyle = vsGradient
+      OnMouseDown = pnlTitleBarMouseDown
+      DesignSize = (
+        529
+        34)
+      object imgTitleBackground: TImage
+        Left = 216
+        Top = 0
+        Width = 313
+        Height = 31
+        Anchors = [akTop, akRight]
+        AutoSize = True
+        Transparent = True
+        OnMouseDown = imgTitleBackgroundMouseDown
+      end
+      object lblTitleBase: TLabel
+        Left = 10
+        Top = 5
+        Width = 60
+        Height = 17
+        Caption = #32593#32476#25910#34255#22841
+        Font.Charset = ANSI_CHARSET
+        Font.Color = 11030012
+        Font.Height = -12
+        Font.Name = #24494#36719#38597#40657
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = True
+        OnMouseDown = lblTitleBaseMouseDown
+      end
+      object imgMin: TImage
+        Left = 472
+        Top = 6
+        Width = 21
+        Height = 19
+        Cursor = crHandPoint
+        Hint = #26368#23567#21270
+        Anchors = [akTop, akRight]
+        AutoSize = True
+        ParentShowHint = False
+        ShowHint = True
+        Transparent = True
+        OnClick = imgMinClick
+        OnMouseDown = imgMinMouseDown
+        OnMouseLeave = imgMinMouseLeave
+        OnMouseMove = imgMinMouseMove
+        OnMouseUp = imgMinMouseUp
+        ExplicitLeft = 726
+      end
+      object imgClose: TImage
+        Left = 501
+        Top = 6
+        Width = 21
+        Height = 19
+        Cursor = crHandPoint
+        Hint = #20851#38381
+        Anchors = [akTop, akRight]
+        AutoSize = True
+        ParentShowHint = False
+        ShowHint = True
+        Transparent = True
+        OnClick = imgCloseClick
+        OnMouseDown = imgCloseMouseDown
+        OnMouseLeave = imgCloseMouseLeave
+        OnMouseMove = imgCloseMouseMove
+        OnMouseUp = imgCloseMouseUp
+        ExplicitLeft = 755
+      end
+    end
+    object pnlBottom: TRzPanel
+      Left = 2
+      Top = 361
+      Width = 529
+      Height = 49
+      Align = alBottom
+      BorderOuter = fsNone
+      BorderSides = [sdTop]
+      BorderColor = 15061994
+      BorderShadow = clWhite
+      BorderWidth = 1
+      Color = clWhite
+      FlatColor = 15061994
+      GradientColorStyle = gcsCustom
+      GradientColorStop = 16510203
+      TabOrder = 1
+      VisualStyle = vsGradient
+    end
+  end
+end

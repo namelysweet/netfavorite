@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>淘管家出错啦</title>
+<style type="text/css">
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, table, th, td{margin: 0;padding: 0; list-style:none;}
+body {background: #fff;color: #666;font-size: 12px; overflow:hidden;}
+td,p,div,select,textarea, input {font: 12px/1.5 微软雅黑, Tahoma, Helvetica, Arial, sans-serif;}
+a,area{blr:expression(this.onFocus=this.blur())}
+a:focus {outline: none}
+.page_404{ width:360px; height:230px; background:url(img/page_404.png) no-repeat; margin:0 auto; margin-top:30px; position:relative;}
+.page_404 .feedback_us{height:30px; color:#fc4ea9; text-decoration:underline; display:block; top:270px; position:absolute; width:370px; left:0px; text-align:center}	
+</style>
+<script language="javascript">
+	function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+	}
+</script>
+</head>
+<body scroll=no>
+<div class="page_404">
+<a href="http://www.xiayijian.com/topic/3392135" class="feedback_us" target=_blank title="将问题反馈给我们" id=code>将问题反馈给我们</a>
+</div>
+<script>
+	document.getElementById("code").innerHTML='将问题反馈给我们 (错误类型: '+getQueryString('code')+')';
+</script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{2DC53556-557A-4404-BD1C-923663277F5B}</ProjectGuid>
+			<ProjectVersion>12.0</ProjectVersion>
+			<MainSource>Tao.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Release</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_DcuOutput>Dcu</DCC_DcuOutput>
+			<DCC_UsePackage>vcl;rtl;vclx;vclimg;vclactnband;dbrtl;vcldb;vcldbx;bdertl;vcltouch;xmlrtl;dsnap;dsnapcon;TeeUI;TeeDB;Tee;vclib;ibxpress;adortl;IndyCore;IndySystem;IndyProtocols;inet;intrawebdb_100_140;Intraweb_100_140;VclSmp;vclie;websnap;webdsnap;inetdb;inetdbbde;inetdbxpress;soaprtl;vclribbon;dbexpress;DbxCommonDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;DbxClientDriver;DataSnapServer;DBXInterBaseDriver;DBXMySQLDriver;dbxcds;DBXFirebirdDriver;DBXSybaseASEDriver;DBXSybaseASADriver;DBXOracleDriver;DBXMSSQLDriver;DBXInformixDriver;DBXDb2Driver;RaizeComponentsVcl;RaizeComponentsVclDb;DropMasterVcl;InspexVclDb;InspexVcl</DCC_UsePackage>
+			<DCC_DefaultNamespace>Xiayijian</DCC_DefaultNamespace>
+			<DCC_ExeOutput>bin</DCC_ExeOutput>
+			<DCC_NameSpace>Xiayijian</DCC_NameSpace>
+			<DCC_DependencyCheckOutputName>bin\Tao.exe</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_E>false</DCC_E>
+			<DCC_N>false</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_F>false</DCC_F>
+			<DCC_K>false</DCC_K>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="Tao.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="BaseFormMain.pas">
+				<Form>frmBaseMain</Form>
+			</DCCReference>
+			<DCCReference Include="FunctionCommon.pas"/>
+			<DCCReference Include="FormMain.pas">
+				<Form>frmMain</Form>
+			</DCCReference>
+			<DCCReference Include="BaseFormCommon.pas">
+				<Form>frmBaseCommon</Form>
+			</DCCReference>
+			<DCCReference Include="IntfDocHostUIHandler.pas"/>
+			<DCCReference Include="NetFavorites_TLB.pas"/>
+			<DCCReference Include="UExternalContainer.pas"/>
+			<DCCReference Include="UNulContainer.pas"/>
+			<DCCReference Include="UMyExternal.pas"/>
+			<DCCReference Include="SystemConfig.pas"/>
+			<DCCReference Include="FormLogin.pas">
+				<Form>frmLogin</Form>
+			</DCCReference>
+			<DCCReference Include="FormSetting.pas">
+				<Form>frmSetting</Form>
+			</DCCReference>
+			<DCCReference Include="FormImportSync.pas">
+				<Form>frmImportSync</Form>
+			</DCCReference>
+			<DCCReference Include="FormAlertMessage.pas">
+				<Form>frmAlertMessage</Form>
+			</DCCReference>
+			<DCCReference Include="FormMessageBox.pas">
+				<Form>frmMessageBox</Form>
+			</DCCReference>
+			<DCCReference Include="FormOpenFrame.pas">
+				<Form>frmOpenFrame</Form>
+			</DCCReference>
+			<DCCReference Include="MD5.pas"/>
+			<DCCReference Include="FrameImportSyncStepOne.pas">
+				<Form>FrameSync1</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrameImportSyncStepTwo.pas">
+				<Form>FrameSync2</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="HardwareInfo.pas"/>
+			<DCCReference Include="ThreadSyncFavorites.pas"/>
+			<DCCReference Include="ThreadGetUserToken.pas"/>
+			<DCCReference Include="CheckPrevious.pas"/>
+			<DCCReference Include="FormCloseTip.pas">
+				<Form>frmCloseTip</Form>
+			</DCCReference>
+			<DCCReference Include="SQLite3.pas"/>
+			<DCCReference Include="SQLiteTable3.pas"/>
+			<DCCReference Include="ThreadCheckVersion.pas"/>
+			<DCCReference Include="FormAbout.pas">
+				<Form>frmAbout</Form>
+			</DCCReference>
+			<DCCReference Include="FormUpdate.pas">
+				<Form>frmUpdate</Form>
+			</DCCReference>
+			<DCCReference Include="ThreadStatApp.pas"/>
+			<None Include="ModelSupport_NetFavorites\Unit1\default.txvpck"/>
+			<None Include="ModelSupport_NetFavorites\Unit1\default.txaPackage"/>
+			<RcItem Include="Png\setting_off.png">
+				<ResourceType>RCData</ResourceType>
+				<ResourceId>SettingOff</ResourceId>
+			</RcItem>
+			<RcItem Include="Png\close_down.png">
+				<ResourceType>RCData</ResourceType>
+				<ResourceId>CloseDown</ResourceId>
+			</RcItem>
+			<RcItem Include="Png\close_off.png">
+				<ResourceType>RCData</ResourceType>
+				<ResourceId>CloseOff</ResourceId>
+			</RcItem>
+			<RcItem Include="Png\close_on.png">
+				<ResourceType>RCData</ResourceType>
+				<ResourceId>CloseOn</ResourceId>
+			</RcItem>
+			<RcItem Include="Png\min_down.png">
+				<ResourceType>RCData</ResourceType>
+				<ResourceId>MinDown</ResourceId>
+			</RcItem>
+			<RcItem Include="Png\min_off.png">
+				<ResourceType>RCData</ResourceType>
+				<ResourceId>MinOff</ResourceId>
+			</RcItem>
+			<RcItem Include="Png\min_on.png">
+				<ResourceType>RCData</ResourceType>
+				<ResourceId>MinOn</ResourceId>
+			</RcItem>
+			<RcItem Include="Png\setting_down.png">
+				<ResourceType>RCData</ResourceType>
+				<ResourceId>SettingDown</ResourceId>
+			</RcItem>
+			<RcItem Include="Png\setting_on.png">
+				<ResourceType>RCData</ResourceType>
+				<ResourceId>SettingOn</ResourceId>
+			</RcItem>
+			<RcItem Include="Png\title.png">
+				<ResourceType>RCData</ResourceType>
+				<ResourceId>PngTitle</ResourceId>
+			</RcItem>
+			<RidlCompile Include="NetFavorites.ridl"/>
+			<RcItem Include="Bmp\btnDisabledL.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnDisabledL</ResourceId>
+			</RcItem>
+			<RcItem Include="Bmp\btnDisabledM.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnDisabledM</ResourceId>
+			</RcItem>
+			<RcItem Include="Bmp\btnDisabledS.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnDisabledS</ResourceId>
+			</RcItem>
+			<RcItem Include="Bmp\btnDownL.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnDownL</ResourceId>
+			</RcItem>
+			<RcItem Include="Bmp\btnDownM.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnDownM</ResourceId>
+			</RcItem>
+			<RcItem Include="Bmp\btnDownS.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnDownS</ResourceId>
+			</RcItem>
+			<RcItem Include="Bmp\btnOnL.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnOnL</ResourceId>
+			</RcItem>
+			<RcItem Include="Bmp\btnOnM.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnOnM</ResourceId>
+			</RcItem>
+			<RcItem Include="Bmp\btnOnS.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnOnS</ResourceId>
+			</RcItem>
+			<RcItem Include="Bmp\btnOutL.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnOutL</ResourceId>
+			</RcItem>
+			<RcItem Include="Bmp\btnOutM.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnOutM</ResourceId>
+			</RcItem>
+			<RcItem Include="Bmp\btnOutS.bmp">
+				<ResourceType>Bitmap</ResourceType>
+				<ResourceId>btnOutS</ResourceId>
+			</RcItem>
+			<None Include="ModelSupport_Tao\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\UNulContainer\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\UMyExternal\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\UMyExternal\default.txvpck"/>
+			<None Include="ModelSupport_Tao\UExternalContainer\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\ThreadVersionCheck\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\ThreadVersionCheck\default.txvpck"/>
+			<None Include="ModelSupport_Tao\ThreadSyncFavorites\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\ThreadGetUserToken\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\SystemConfig\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\SQLiteTable3\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\SQLite3\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\NetFavorites_TLB\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\NetFavorites\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\NetFavorites\default.txvpck"/>
+			<None Include="ModelSupport_Tao\MD5\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\IntfDocHostUIHandler\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\HardwareInfo\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FunctionCommon\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FunctionCommon\default.txvpck"/>
+			<None Include="ModelSupport_Tao\FrameImportSyncStepTwo\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FrameImportSyncStepTwo\default.txvpck"/>
+			<None Include="ModelSupport_Tao\FrameImportSyncStepThree\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FrameImportSyncStepThree\default.txvpck"/>
+			<None Include="ModelSupport_Tao\FrameImportSyncStepOne\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FrameImportSyncStepOne\default.txvpck"/>
+			<None Include="ModelSupport_Tao\FormUpdate\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FormSetting\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FormOpenFrame\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FormMessageBox\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FormMain\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FormLogin\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FormImportSync\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FormImportSync\default.txvpck"/>
+			<None Include="ModelSupport_Tao\FormCloseTip\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FormAlertMessage\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\FormAbout\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\CheckPrevious\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\BaseFormMain\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\BaseFormMain\default.txvpck"/>
+			<None Include="ModelSupport_Tao\BaseFormCommon\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\default.txvpck"/>
+			<None Include="ModelSupport_Tao\ThreadCheckVersion\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\ThreadStatApp\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\Tao\default.txaPackage"/>
+			<None Include="ModelSupport_Tao\Tao\default.txvpck"/>
+			<None Include="ModelSupport_Tao\MD5\default.txvpck"/>
+			<None Include="ModelSupport_Tao\UExternalContainer\default.txvpck"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">Tao.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="RunParams">-static</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">1</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2052</VersionInfo>
+						<VersionInfo Name="CodePage">936</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">淘管家</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">淘管家</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.0.0.1</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">淘管家</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright">下一件</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalTrademarks">下一件(Xiayijian)</VersionInfoKeys>
+						<VersionInfoKeys Name="OriginalFilename">www.xiayijian.com</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductName">淘管家</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments">下一件淘管家应用程序</VersionInfoKeys>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+				<ModelSupport>True</ModelSupport>
+				<ActiveXProjectInfo>
+					<version>1</version>
+				</ActiveXProjectInfo>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
